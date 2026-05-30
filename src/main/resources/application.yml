@@ -42,7 +42,7 @@ spring:
 
 # 小米mimo API配置
 mimo:
-  api-key: ${MIMO_API_KEY:tp-cqsfj4t9jgebdro6viizi2zmmhla1qmtkwif2p6n7ivs5cu0}
+  api-key: ${MIMO_API_KEY:你的秘钥}
   base-url: https://token-plan-cn.xiaomimimo.com/v1
   chat-model: mimo-v2.5-pro
   embedding-model: mimo-v2.5-pro
