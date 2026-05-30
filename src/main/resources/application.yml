@@ -1,0 +1,68 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sports-customer-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/customer_service?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 10000
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 10
+          min-idle: 5
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    serialization:
+      write-dates-as-timestamps: false
+
+# 小米mimo API配置
+mimo:
+  api-key: ${MIMO_API_KEY:tp-cqsfj4t9jgebdro6viizi2zmmhla1qmtkwif2p6n7ivs5cu0}
+  base-url: https://token-plan-cn.xiaomimimo.com/v1
+  chat-model: mimo-v2.5-pro
+  embedding-model: mimo-v2.5-pro
+  max-tokens: 2048
+  temperature: 0.7
+
+# RAG配置
+rag:
+  chunk-size: 500
+  chunk-overlap: 50
+  top-k: 3
+  similarity-threshold: 0.7
+
+# 对话配置
+chat:
+  max-context-messages: 10
+  session-timeout: 3600
+  cache-ttl: 1800
+
+logging:
+  level:
+    com.sports.customer: DEBUG
+    org.springframework.data.jpa: INFO
